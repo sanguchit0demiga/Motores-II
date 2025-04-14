@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Destroyer
+  - FxTemporaire
+  - Obstacle
+  - Obstcales
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -1,18 +1,19 @@
 using UnityEngine;
-
+using TMPro;
 public class Player : MonoBehaviour
 {
     public float laneDistance = 2f; 
     public float laneChangeSpeed = 5f; 
     public float jumpForce;
-    private int currentLane = 1; 
-
+    private int currentLane = 1;
+    public TextMeshProUGUI scoreText;
     private Rigidbody rb;
     private Vector3 targetPosition;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetPosition = transform.position;
+        
     }
 
     void Update()
@@ -36,5 +37,8 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
     }
-}
+   
+    }
+    

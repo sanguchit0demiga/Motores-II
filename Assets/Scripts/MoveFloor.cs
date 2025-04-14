@@ -3,7 +3,6 @@ using UnityEngine;
 public class MoveFloor : MonoBehaviour
 {
     public float speed;
-    public GameObject obstaclePrefab;
 
     void Start()
     {
