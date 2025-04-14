@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public float laneChangeSpeed = 5f; 
     public float jumpForce;
     private int currentLane = 1;
-    public TextMeshProUGUI scoreText;
+ 
     private Rigidbody rb;
     private Vector3 targetPosition;
     void Start()
