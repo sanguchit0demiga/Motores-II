@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -857,7 +857,7 @@ MonoBehaviour:
   spawnDistanceZ: 2.8
   timeBetweenSpawnsType1: 2.7
   timeBetweenSpawnsType2: 3.6
-  obstacleSpeed: 8
+  obstacleSpeed: 6
 --- !u!4 &369766502
 Transform:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  speed: 5
+  speed: 6
 --- !u!1001 &1296423203156307664
 PrefabInstance:
   m_ObjectHideFlags: 0
