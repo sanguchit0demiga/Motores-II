@@ -8,7 +8,7 @@ public class FloorSpawner : MonoBehaviour
     void Start()
     {
         SpawnBlock();
-        InvokeRepeating("SpawnBlock", 0, 2.5f);
+        InvokeRepeating("SpawnBlock", 0, 1.5f);
     }
 
     

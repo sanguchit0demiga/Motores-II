@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+  
     public GameObject[] obstaclePrefabs;
     public float spawnDistanceZ;
     public float timeBetweenSpawnsType1;
     public float timeBetweenSpawnsType2;
     public float obstacleSpeed;
+  
 
     private float[] lanes = new float[] { -3.380129f, 0.2198715f, 3.51f };
 
@@ -67,6 +70,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             var mover = newObstacle.AddComponent<ObstacleMover>();
             mover.speed = obstacleSpeed;
+
         }
     }
 
@@ -80,21 +84,5 @@ public class ObstacleSpawner : MonoBehaviour
         return laneIndex;
     }
 
-    public class ObstacleMover : MonoBehaviour
-    {
-        public float speed;
-
-        void Update()
-        {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Destroyer"))
-            {
-                Destroy(gameObject);
-            }
-        }
     }
-}
+

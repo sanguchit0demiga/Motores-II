@@ -1,7 +1,10 @@
 using UnityEngine;
 using TMPro;
+using System;
 public class Player : MonoBehaviour
 {
+    public event EventHandler playerDeath;
+    [SerializeField] private int health;
     public float laneDistance = 2f; 
     public float laneChangeSpeed = 5f; 
     public float jumpForce;
@@ -38,6 +41,15 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
+    }
+    public void TakeDamage(int cantDamage)
+    {
+        health-= cantDamage;
+        if (health <= 0)
+        {
+            playerDeath?.Invoke(this,EventArgs.Empty);
+            Destroy(gameObject);
+        }
     }
    
     }
