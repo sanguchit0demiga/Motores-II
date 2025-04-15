@@ -1,21 +1,26 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Coin : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject objScore;
-    public float value;
-    public int speed;
+    public float value = 1f;
+    public int speed = 5;
+    private ScoreManager scoreManager;
+
+    void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+    }
+
     void Update()
     {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player") && scoreManager != null)
         {
-            objScore.GetComponent<ScoreManager>().score += value;
+            scoreManager.score += value;
             Destroy(gameObject);
         }
     }
