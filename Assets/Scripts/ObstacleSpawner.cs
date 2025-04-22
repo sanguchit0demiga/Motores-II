@@ -1,88 +1,36 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-  
-    public GameObject[] obstaclePrefabs;
-    public float spawnDistanceZ;
-    public float timeBetweenSpawnsType1;
-    public float timeBetweenSpawnsType2;
-    public float obstacleSpeed;
-  
+    public GameObject[] obstaclePrefabs; 
+    public float spawnDistanceZ = 30f;   
+    public float timeBetweenSpawns = 3f; 
+    public float obstacleSpeed = 5f;    
 
-    private float[] lanes = new float[] { -3.380129f, 0.2198715f, 3.51f };
-
-    private float nextSpawnTimeType1;
-    private float nextSpawnTimeType2;
+    private float nextSpawnTime;
 
     void Update()
     {
-        if (Time.time >= nextSpawnTimeType1)
+        if (Time.time >= nextSpawnTime)
         {
-            SpawnObstacles(0);
-            nextSpawnTimeType1 = Time.time + timeBetweenSpawnsType1;
-        }
-
-        if (Time.time >= nextSpawnTimeType2)
-        {
-            SpawnObstacles(1);
-            nextSpawnTimeType2 = Time.time + timeBetweenSpawnsType2;
+            SpawnObstacleBlock();
+            nextSpawnTime = Time.time + timeBetweenSpawns;
         }
     }
 
-    void SpawnObstacles(int obstacleType)
+    void SpawnObstacleBlock()
     {
-        int totalObstacles = Random.Range(1, 4);
-        int type1Count = obstacleType == 0 ? Mathf.Min(2, totalObstacles) : 0;
-        int type2Count = totalObstacles - type1Count;
+        int prefabIndex = Random.Range(0, obstaclePrefabs.Length); 
+        GameObject selectedBlock = obstaclePrefabs[prefabIndex];
 
-        bool[] lanesOccupied = new bool[lanes.Length];
-        float currentZ = transform.position.z + spawnDistanceZ;
+        
+        Vector3 spawnPos = new Vector3(1.12f, 3.583211f, transform.position.z + spawnDistanceZ);
+        GameObject newBlock = Instantiate(selectedBlock, spawnPos, Quaternion.identity);
 
-        for (int i = 0; i < type1Count; i++)
+         if (newBlock.GetComponent<ObstacleMover>() == null)
         {
-            int laneIndex = GetAvailableLane(lanesOccupied);
-            lanesOccupied[laneIndex] = true;
-            SpawnObstacle(0, laneIndex, currentZ);
-            currentZ += spawnDistanceZ;
-        }
-
-        for (int i = 0; i < type2Count; i++)
-        {
-            int laneIndex = GetAvailableLane(lanesOccupied);
-            lanesOccupied[laneIndex] = true;
-            SpawnObstacle(1, laneIndex, currentZ);
-            currentZ += spawnDistanceZ;
-        }
-    }
-
-    void SpawnObstacle(int obstacleType, int laneIndex, float spawnZ)
-    {
-        float spawnHeight = (obstacleType == 0) ? 1.3f : 0.5f;
-        float x = lanes[laneIndex];
-        Vector3 spawnPos = new Vector3(x, spawnHeight, spawnZ);
-
-        GameObject selectedObstacle = obstaclePrefabs[obstacleType];
-        GameObject newObstacle = Instantiate(selectedObstacle, spawnPos, Quaternion.identity);
-
-        if (newObstacle.GetComponent<ObstacleMover>() == null)
-        {
-            var mover = newObstacle.AddComponent<ObstacleMover>();
+            ObstacleMover mover = newBlock.AddComponent<ObstacleMover>();
             mover.speed = obstacleSpeed;
-
         }
     }
-
-    int GetAvailableLane(bool[] lanesOccupied)
-    {
-        int laneIndex;
-        do
-        {
-            laneIndex = Random.Range(0, lanes.Length);
-        } while (lanesOccupied[laneIndex]);
-        return laneIndex;
-    }
-
-    }
-
+}
