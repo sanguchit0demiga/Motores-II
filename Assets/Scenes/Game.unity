@@ -947,14 +947,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefabs:
   - {fileID: 1809274507895409870, guid: e4ebb2e7ed7ec3348b8117e71b9bebe3, type: 3}
-  - {fileID: 5808674229321478334, guid: c8a1e0ad807d5c3479cba3015bef5c88, type: 3}
-  spawnDistanceZ: 2.8
-  timeBetweenSpawns: 3
-  obstacleSpeed: 5
-  spawnHeight1: 3.583211
-  spawnHeight2: 1.6217
-  spawnX1: 1.27
-  spawnX2: -0.15
+  - {fileID: 1809274507895409870, guid: fc95af0ea732cc24c9357050a70688f9, type: 3}
+  spawnDistanceZ: 5
+  timeBetweenSpawns: 5
+  obstacleSpeed: 4
 --- !u!4 &369766502
 Transform:
   m_ObjectHideFlags: 0
@@ -1517,6 +1513,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 139, y: 70.82238, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1212464797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212464799}
+  - component: {fileID: 1212464798}
+  m_Layer: 0
+  m_Name: SkyboxChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1212464798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212464797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a8d96ff005ae0488f86e7af671b279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSkyboxMaterial: {fileID: 2100000, guid: 03389866351d19a47adc95c57d054097, type: 2}
+  scoreto: 200
+--- !u!4 &1212464799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212464797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2953525, y: -1.1217198, z: -21.096853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2166,8 +2208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   laneDistance: 3.5
-  laneChangeSpeed: 50
-  jumpForce: 8
+  laneChangeSpeed: 70
+  jumpForce: 6
 --- !u!1 &2005411034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,3 +2456,4 @@ SceneRoots:
   - {fileID: 369766502}
   - {fileID: 2005411036}
   - {fileID: 212289585}
+  - {fileID: 1212464799}

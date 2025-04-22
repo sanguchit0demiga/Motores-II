@@ -23,5 +23,14 @@ public class Coin : MonoBehaviour
             scoreManager.score += value;
             Destroy(gameObject);
         }
+        else {
+            
+            {
+                if (other.CompareTag("Destroyer"))
+                {
+                    Destroy(gameObject);
+                }
+            }
+}
     }
 }
